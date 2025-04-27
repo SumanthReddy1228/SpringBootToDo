@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Welcome Page</title>
+<title>List Todos Page</title>
 <style>
 body {
 	font-family: Arial, sans-serif;
@@ -23,9 +23,7 @@ p {
 </style>
 </head>
 <body>
-	<h1>Welcome ${name}!</h1>
-	<div>
-		<a href="list-todos">Manage</a> your todos
-	</div>
+	<h1>Welcome ${name}</h1>
+	<div>Your Todos are ${todos}</div>
 </body>
 </html>
