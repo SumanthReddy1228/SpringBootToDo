@@ -6,23 +6,32 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+
 @Service
 public class TodoService {
 
+	private static int todoCount=0;
 	
 	private static List<Todo> todos=new ArrayList<>();
 
 	static {
-		todos.add(new Todo(2, "codePractice", "Master Java Streams", LocalDate.now().plusMonths(6), false));
-		todos.add(new Todo(3, "dataScience", "Explore Machine Learning", LocalDate.now().plusYears(2), false));
-		todos.add(new Todo(4, "webDev", "Build a React Project", LocalDate.now().plusMonths(3), false));
-		todos.add(new Todo(5, "cloudSkills", "Obtain Azure Certification", LocalDate.now().plusYears(1), false));
-		todos.add(new Todo(6, "AIResearch", "Read about Neural Networks", LocalDate.now().plusWeeks(4), false));
+		todos.add(new Todo(++todoCount, "codePractice", "Master Java Streams", LocalDate.now().plusMonths(6), false));
+		todos.add(new Todo(++todoCount, "dataScience", "Explore Machine Learning", LocalDate.now().plusYears(2), false));
+		todos.add(new Todo(++todoCount, "webDev", "Build a React Project", LocalDate.now().plusMonths(3), false));
+		todos.add(new Todo(++todoCount, "cloudSkills", "Obtain Azure Certification", LocalDate.now().plusYears(1), false));
+		todos.add(new Todo(++todoCount, "AIResearch", "Read about Neural Networks", LocalDate.now().plusWeeks(4), false));
 	}
 	
 	 
 	public List<Todo> findByUserName(String username){
 		return todos;//need to implement filter
+	}
+	
+	public void addTodo(String username,String description,LocalDate targetDate,boolean isdone) {
+		
+		Todo  todo=new Todo(++todoCount,username,description,targetDate,isdone);
+		todos.add(todo);
 	}
 	
 }

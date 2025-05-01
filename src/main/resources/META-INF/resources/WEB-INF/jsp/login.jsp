@@ -1,64 +1,40 @@
-<!DOCTYPE html>
 <html>
 <head>
     <title>Login Page</title>
+    <link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
+            background-color: #f8f9fa; /* Subtle background color for better aesthetics */
         }
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-        form {
-            width: 300px;
-            margin: 50px auto;
+        .form-container {
+            max-width: 400px;
+            margin: 50px auto; /* Center the form vertically and horizontally */
+            background-color: #fff; /* White background for the form */
             padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: bold;
-            color: #555;
-        }
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 8px;
-            margin: 5px 0 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        input[type="submit"]:hover {
-            background-color: #45a049;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight shadow for depth */
         }
     </style>
 </head>
 <body>
-    <h2>Login</h2>
-    <form method="post">
-        <label for="name">Username:</label>
-        <input type="text" id="username" name="name" required>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-    		${errromessage}
-        <input type="submit" value="Login">
-    </form>
+    <div class="form-container">
+        <h2 class="text-center">Login</h2>
+        <form method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" id="username" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <div class="mb-3 text-danger">
+                ${errromessage}
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+    </div>
+    <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
 </body>
 </html>
