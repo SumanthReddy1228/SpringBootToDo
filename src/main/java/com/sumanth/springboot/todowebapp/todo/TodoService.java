@@ -3,10 +3,11 @@ package com.sumanth.springboot.todowebapp.todo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import jakarta.validation.Valid;
 
 @Service
 public class TodoService {
@@ -31,6 +32,21 @@ public class TodoService {
 	public void addTodo(String username,String description,LocalDate targetDate,boolean isdone) {
 		
 		Todo  todo=new Todo(++todoCount,username,description,targetDate,isdone);
+		todos.add(todo);
+	}
+	
+	public void deleteById(int id) {
+		todos.removeIf(todo->todo.getId()==id);
+	}
+	
+	public Todo findById(int id) {
+		Predicate<? super Todo> predicate=todo->todo.getId()==id;
+		Todo todo =todos.stream().filter(predicate).findFirst().get();
+		return todo;
+	}
+	
+	public void update(@Valid Todo todo) {
+		deleteById(todo.getId());
 		todos.add(todo);
 	}
 	
