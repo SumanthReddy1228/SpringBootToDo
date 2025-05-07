@@ -1,25 +1,8 @@
-<%@ taglib prefix="c" uri="jakarta.tags.core"%>
-<html>
-<head>
-<title>List Todos Page</title>
-<link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css"
-	rel="stylesheet">
-<style>
-body {
-	background-color: #f8f9fa;
-	/* Subtle background color for better aesthetics */
-}
 
-td:last-child a {
-	display: inline-block;
-	/* Ensures the button takes only necessary space */
-	text-decoration: none; /* Removes default link styling */
-}
-</style>
-</head>
-<body class="container mt-4">
-	<h1 class="text-center text-primary">Welcome ${name}</h1>
-	<div class="mb-3 text-secondary text-center">Your Todos are</div>
+<%@include file="common/header.jspf"%>
+<%@include file="common/navigation.jspf"%>
+<div class="container mt-4">
+	<h1>Your Todos are</h1>
 	<table class="table table-bordered table-hover table-striped">
 		<thead class="table-dark">
 			<tr>
@@ -47,7 +30,5 @@ td:last-child a {
 		</tbody>
 	</table>
 	<a href="add-todo" class="btn btn-success">Add Todo</a>
-	<script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-	<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
-</body>
-</html>
+</div>
+<%@include file="common/footer.jspf"%>
