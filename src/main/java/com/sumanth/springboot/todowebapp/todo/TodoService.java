@@ -17,16 +17,18 @@ public class TodoService {
 	private static List<Todo> todos=new ArrayList<>();
 
 	static {
-		todos.add(new Todo(++todoCount, "codePractice", "Master Java Streams", LocalDate.now().plusMonths(6), false));
-		todos.add(new Todo(++todoCount, "dataScience", "Explore Machine Learning", LocalDate.now().plusYears(2), false));
-		todos.add(new Todo(++todoCount, "webDev", "Build a React Project", LocalDate.now().plusMonths(3), false));
-		todos.add(new Todo(++todoCount, "cloudSkills", "Obtain Azure Certification", LocalDate.now().plusYears(1), false));
-		todos.add(new Todo(++todoCount, "AIResearch", "Read about Neural Networks", LocalDate.now().plusWeeks(4), false));
+		todos.add(new Todo(++todoCount, "codePractice", "Master Java Streams 1", LocalDate.now().plusMonths(6), false));
+		todos.add(new Todo(++todoCount, "dataScience", "Explore Machine Learning 1", LocalDate.now().plusYears(2), false));
+		todos.add(new Todo(++todoCount, "sumanth", "Build a React Project 1", LocalDate.now().plusMonths(3), false));
+		todos.add(new Todo(++todoCount, "cloudSkills", "Obtain Azure Certification 1", LocalDate.now().plusYears(1), false));
+		todos.add(new Todo(++todoCount, "AIResearch", "Read about Neural Networks 1", LocalDate.now().plusWeeks(4), false));
 	}
 	
 	 
 	public List<Todo> findByUserName(String username){
-		return todos;//need to implement filter
+		Predicate<? super Todo> predicate=todo->todo.getUsername()==username;
+		
+		return todos.stream().filter(predicate).toList();//need to implement filter
 	}
 	
 	public void addTodo(String username,String description,LocalDate targetDate,boolean isdone) {
